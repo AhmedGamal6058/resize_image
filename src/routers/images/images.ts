@@ -11,25 +11,23 @@ image.get('/', (req: Request, res: Response): void => {
     });
   }
   async function asyncCall() {
-    console.log('calling');
     const fs = require('fs');
-    const path =`/src/resize/filename=${req.query.filename}&width=${req.query.width}&height=${req.query.height}.jpg`;
+    const path = `/src/resize/filename=${req.query.filename}&width=${req.query.width}&height=${req.query.height}.jpg`;
     try {
       if (fs.existsSync(`${process.cwd()}/${path}`)) {
         res.sendFile(
-            `/src/resize/filename=${req.query.filename}&width=${req.query.width}&height=${req.query.height}.jpg`,
-            { root: process.cwd() }
-          );
-      }
-      else{
+          `/src/resize/filename=${req.query.filename}&width=${req.query.width}&height=${req.query.height}.jpg`,
+          { root: process.cwd() }
+        );
+      } else {
         prosses(
-            `${req.query.filename}`,
-            `${req.query.width}`,
-            `${req.query.height}`
-          );
+          `${req.query.filename}`,
+          `${req.query.width}`,
+          `${req.query.height}`
+        );
       }
     } catch (err) {
-      console.error("err");
+      console.error('err');
     }
     const result = await promise();
     console.log(result);

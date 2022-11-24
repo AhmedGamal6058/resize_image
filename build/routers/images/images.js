@@ -39,6 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable @typescript-eslint/no-var-requires */
 var express_1 = __importDefault(require("express"));
 var prosses_1 = __importDefault(require("../../utilities/prosses"));
 var image = (0, express_1.default)();
@@ -47,18 +48,29 @@ image.get('/', function (req, res) {
         return new Promise(function (resolve) {
             setTimeout(function () {
                 resolve('resolved');
-            }, 2000);
+            }, 3000);
         });
     }
     function asyncCall() {
         return __awaiter(this, void 0, void 0, function () {
-            var error, result;
+            var fs, path, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log('calling');
-                        error = (0, prosses_1.default)("".concat(req.query.filename), "".concat(req.query.width), "".concat(req.query.height));
-                        console.log(error);
+                        fs = require('fs');
+                        path = "/src/resize/filename=".concat(req.query.filename, "&width=").concat(req.query.width, "&height=").concat(req.query.height, ".jpg");
+                        try {
+                            if (fs.existsSync("".concat(process.cwd(), "/").concat(path))) {
+                                res.sendFile("/src/resize/filename=".concat(req.query.filename, "&width=").concat(req.query.width, "&height=").concat(req.query.height, ".jpg"), { root: process.cwd() });
+                            }
+                            else {
+                                (0, prosses_1.default)("".concat(req.query.filename), "".concat(req.query.width), "".concat(req.query.height));
+                            }
+                        }
+                        catch (err) {
+                            console.error('err');
+                        }
                         return [4 /*yield*/, promise()];
                     case 1:
                         result = _a.sent();

@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../index"));
+var prosses_1 = __importDefault(require("./../utilities/prosses"));
 var request = (0, supertest_1.default)(index_1.default);
 describe('Test endpoint responses', function () {
     it('gets the home endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -83,6 +84,14 @@ describe('Test endpoint responses', function () {
                     _a.apply(void 0, [(_b.sent()).status]).toBe(200);
                     return [2 /*return*/];
             }
+        });
+    }); });
+});
+describe('Test shape responses', function () {
+    it('width and height is number', function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            expect((0, prosses_1.default)("fjord", "200", "200")).toEqual(40000);
+            return [2 /*return*/];
         });
     }); });
 });
