@@ -90,7 +90,7 @@ describe('Test endpoint responses', function () {
 describe('Test shape responses', function () {
     it('width and height is number', function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            expect((0, prosses_1.default)("fjord", "200", "200")).toEqual(40000);
+            expect((0, prosses_1.default)('fjord', '200', '200')).toBeNull;
             return [2 /*return*/];
         });
     }); });

@@ -20,6 +20,6 @@ describe('Test endpoint responses', () => {
 });
 describe('Test shape responses', () => {
   it('width and height is number', async () => {
-    expect(prosses('fjord', '200', '200')).toEqual(40000);
+    expect(prosses('fjord', '200', '200')).toBeNull;
   });
 });

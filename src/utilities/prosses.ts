@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const prosses = (filename: string, width: string, height: string): number => {
+const prosses = (filename: string, width: string, height: string): string => {
   const sharp = require('sharp');
-  const Width = parseInt(`${width}`);
-  const Height = parseInt(`${height}`);
+  let error = '';
   sharp(`${process.cwd()}/src/images/${filename}.jpg`)
-    .resize(Width, Height)
+    .resize(parseInt(`${width}`), parseInt(`${height}`))
     .toFile(
-      `${process.cwd()}/src/resize/filename=${filename}&width=${width}&height=${height}.jpg`
+      `${process.cwd()}/src/resize/filename=${filename}&width=${width}&height=${height}.jpg`,
+      (err: string): void => {
+        error = err;
+      }
     );
-  return Width * Height;
+  return error;
 };
 export default prosses;

@@ -57,7 +57,6 @@ image.get('/', function (req, res) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log('calling');
                         fs = require('fs');
                         path = "/src/resize/filename=".concat(req.query.filename, "&width=").concat(req.query.width, "&height=").concat(req.query.height, ".jpg");
                         try {
