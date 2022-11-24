@@ -1,7 +1,7 @@
-import express from 'express';
 import image from './images/images';
+import express, { Request, Response } from 'express';
 const routers  = express();
-routers.get('/', (req, res) => {
+routers.get('/', (req:Request, res:Response):void => {
    res.send("hellow sir");
 });
 routers.use("/image",image)

@@ -43,6 +43,20 @@ var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../index"));
 var request = (0, supertest_1.default)(index_1.default);
 describe('Test endpoint responses', function () {
+    it('gets the home endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    response = request.get('/');
+                    _a = expect;
+                    return [4 /*yield*/, response];
+                case 1:
+                    _a.apply(void 0, [(_b.sent()).status]).toBe(200);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
     it('gets the api endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response, _a;
         return __generator(this, function (_b) {
@@ -57,7 +71,7 @@ describe('Test endpoint responses', function () {
             }
         });
     }); });
-    it('gets the image api endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('gets the image endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import express from 'express';
+import express, { Request, Response } from 'express';
 import routers from './routers/api';
 const app = express();
 const port = 3000;
-app.get('/', (_req, res):void => {
+app.get('/', (_req: Request, res: Response): void => {
   res.send(
     `<div style="font-size:20px;text-align: center;font-family: sans-serif;font-weight: 600;letter-spacing: 1px;">
     example of path :
@@ -13,7 +13,7 @@ app.get('/', (_req, res):void => {
   );
 });
 app.use('/api', routers);
-app.listen(port, ():void => {
+app.listen(port, (): void => {
   console.log(`server started at http://localhost:${port}`);
 });
 export default app;
