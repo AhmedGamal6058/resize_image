@@ -1,10 +1,13 @@
-// import supertest from 'supertest';
-// import app from '../index';
-
-// const request = supertest(app);
-// describe('Test endpoint responses', () => {
-//     it('gets the api endpoint',() => {
-//         const response = request.get('/api');
-//         expect(response.status).toBe(200);
-//     }
-// )});
+ import supertest from 'supertest';
+ import app from '../index';
+ const request = supertest(app);
+ describe('Test endpoint responses', () => {
+     it('gets the api endpoint',async () => {
+         const response = request.get('/api');
+         expect((await response).status).toBe(200);
+     });
+     it('gets the image api endpoint',async () => {
+        const response = request.get('/api/image?filename=fjord&width=100&height=100');
+        expect((await response).status).toBe(200);
+    })
+});
